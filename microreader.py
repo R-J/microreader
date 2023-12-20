@@ -215,9 +215,9 @@ def create_channel() -> str:
 
 @route('/channels', method='POST')
 def post_channel():
-    url = request.forms.get('url')
-    Channel.create_from_url(url)
-    channel = Channel.get(Channel.url == url)
+    channel_url = request.forms.get('url')
+    Channel.create_from_url(channel_url)
+    channel = Channel.get(Channel.url == channel_url)
     channel.save_favicon()
     channel.update_feed()
     redirect(url('/channels/<id:int>/items', id=channel.id))
