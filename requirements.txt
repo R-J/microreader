@@ -1,6 +1,6 @@
 feedparser==5.1.2
 bottle==0.12.3
 peewee==2.2.0
-beautifulsoup4==4.3.2
+beautifulsoup4==4.12.2
 listparser==0.17
 
