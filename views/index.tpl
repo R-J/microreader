@@ -13,56 +13,56 @@
 		<form action="{{url('/items')}}" method="get">
 		<ul>
 			<li>
-				<a href = "" id = "menu-toggle">
-				<i class ="icon-menu"></i>
+				<a href="" id="menu-toggle">
+				<i class="icon-menu"></i>
 				Menu
 				</a>
 			</li>
-		<ul id = "menu">		
-		<ul class = "nav-section">
+		<ul id="menu">		
+		<ul class="nav-section">
 			<li>
 
-				<a href ="{{url('/channels/create')}}" class = "nav-link" id ="subscribe-link">
-					<i class = "icon-plus"></i>
+				<a href="{{url('/channels/create')}}" class="nav-link" id="subscribe-link">
+					<i class="icon-plus"></i>
 					Subscribe
 				</a>				
 			</li>
 			<li>
 				
-				<a href ="{{url('/channels/import')}}" class = "nav-link" id ="import-link">
-					<i class = "icon-import"></i>
+				<a href="{{url('/channels/import')}}" class="nav-link" id="import-link">
+					<i class="icon-import"></i>
 					Import
 				</a>				
 			</li>		
 		</ul>
-		<ul class = "nav-section">			
+		<ul class="nav-section">			
 			<li>
-				<a href = "{{url('/items')}}" id ="all" class = "nav-link {{is_active('/items')}}">
-					<i class = "icon-folder"></i>
+				<a href="{{url('/items')}}" id="all" class="nav-link {{is_active('/items')}}">
+					<i class="icon-folder"></i>
 					All
 				</a>				
 			</li>
 			<li>
-				<a href = "{{url('/items')}}?starred=1" id = "starred" class = "nav-link {{is_active('/items?starred=1')}}">
-					<i class = "icon-star"></i>
+				<a href="{{url('/items')}}?starred=1" id="starred" class="nav-link {{is_active('/items?starred=1')}}">
+					<i class="icon-star"></i>
 					Starred
 				</a>
 			</li>
 		</ul>
-		<ul class = "channels nav-section">
+		<ul class="channels nav-section">
 		%for channel in channels:		
 			<li>
                 <input type="checkbox" name=channel value="{{channel.id}}" {{'checked' if channel.filter else ''}}>
-                <a href = "{{url('/channels/<id:int>/items', id=channel.id)}}" class = "nav-link {{is_active("/channels/" + str(channel.id) + "/items")}} {{'has-new' if channel.has_new() else ''}}">
+                <a href="{{url('/channels/<id:int>/items', id=channel.id)}}" class="nav-link {{is_active("/channels/" + str(channel.id) + "/items")}} {{'has-new' if channel.has_new() else ''}}">
 
-				<i class = "icon-feed" style="background-image: url('{{favicon(channel.id)}}');"></i>
+				<i class="icon-feed" style="background-image: url('{{favicon(channel.id)}}');"></i>
 					{{channel.title}}
 				</a>				
-				<span class = "side">
-					<span class = "not-important">({{channel.unread_count}})</span>
-					<a href = "{{url('/channels/<id:int>/edit', id=channel.id)}}" class = "item-link nav-dropdown">
-						<i class = "icon-caret-down">
-                           <img alt = "[settings]" src="{{url('/static/<filename:path>', filename='pixel.png')}}"></img>
+				<span class="side">
+					<span class="not-important">({{channel.unread_count}})</span>
+					<a href="{{url('/channels/<id:int>/edit', id=channel.id)}}" class="item-link nav-dropdown">
+						<i class="icon-caret-down">
+                           <img alt="[settings]" src="{{url('/static/<filename:path>', filename='pixel.png')}}"></img>
 						</i>
 					</a>
 				</div>
@@ -74,27 +74,27 @@
 		</ul>
 		</form>
 	</nav>
-	<dl class = "accordion" id = "content">
+	<dl class="accordion" id="content">
 		%for item in items:
-		<div class = "item">			
-		<dt class = "{{"read" if item.read else ""}}">	
-			<span class = "side">
-				<span class = "not-important">
+		<div class="item">			
+		<dt class="{{"read" if item.read else ""}}">	
+			<span class="side">
+				<span class="not-important">
 					{{date_format(item.updated)}}
 				</span>				
 			</span>			
-			<span class = "header">
+			<span class="header">
 				<span class="actions">
-				<a class = "mark-star item-link" data-id = "{{item.id}}" data-checked = "{{"true" if item.starred else "false"}}"  href ="{{url('/items/<id:int>', id=item.id)}}">
-					<i class = {{"icon-star" if item.starred else "icon-star-empty"}}><img alt="[star]" src="{{url('/static/<filename:path>', filename='pixel.png')}}"></img></i>
+				<a class="mark-star item-link" data-id="{{item.id}}" data-checked="{{"true" if item.starred else "false"}}"  href="{{url('/items/<id:int>', id=item.id)}}">
+					<i class= {{"icon-star" if item.starred else "icon-star-empty"}}><img alt="[star]" src="{{url('/static/<filename:path>', filename='pixel.png')}}"></img></i>
 				</a>
-				<a class = "item-link external-link" href = "{{item.url}}" target="_blank" data-id = "{{item.id}}">
-					<i class = "icon-external"border="0"><img alt = "[link]" src="{{url('/static/<filename:path>', filename='pixel.png')}}"></img></i>
+				<a class="item-link external-link" href="{{item.url}}" target="_blank" data-id="{{item.id}}">
+					<i class="icon-external"border="0"><img alt="[link]" src="{{url('/static/<filename:path>', filename='pixel.png')}}"></img></i>
 				</a>
 			    </span>
-				<a href = '{{url('/items/<id:int>', id=item.id)}}' class = "mark-read" data-id="{{item.id}}">
-					<i class = "icon-feed" style="background-image: url('{{favicon(item.channel.id)}}');"></i>
-					<span class="title {{'new-item' if item.new else ''}}" id = {{item.id}}>
+				<a href= '{{url('/items/<id:int>', id=item.id)}}' class="mark-read" data-id="{{item.id}}">
+					<i class="icon-feed" style="background-image: url('{{favicon(item.channel.id)}}');"></i>
+					<span class="title {{'new-item' if item.new else ''}}" id= {{item.id}}>
 						{{item.title}}
 					</span>
 					-
@@ -105,23 +105,23 @@
 			</span>
 
 		</dt>
-		<dd class = "description" data-id = "{{item.id}}" style = "display:none;">
+		<dd class="description" data-id="{{item.id}}" style="display:none;">
 		</dd>
 		</div>		
 		%end
 
 		<div class="left">
 		%if prev:
-		  <a class = "page-link" href = {{prev}} > &larr; Prev </a>
+		  <a class="page-link" href= {{prev}} > &larr; Prev </a>
 		%end
 		%if next:
-			<a class = "page-link" href = {{next}} > Next &rarr; </a>
+			<a class="page-link" href= {{next}} > Next &rarr; </a>
 		%end
 		</div>
 	</dl>
 	
 	
-	<div style="display:none" id = "modal" class ="popup"></div>		
+	<div style="display:none" id="modal" class="popup"></div>		
 
 </body>
 </html>
@@ -131,15 +131,15 @@
 		$('.item .mark-read').click(function(event)
 		{
 			event.preventDefault();
-			var title = $(this);
+			var title= $(this);
 			console.log('loading content: ' + title.attr('href'));
 			$.get(title.attr('href'), function(data){
 				$('dd[data-id="' + title.data('id') + '"]').html(data);
 			});
 			
 			// show description
-			var id = $(this).attr('data-id');
-			var e = 'dd[data-id="' + id + '"]';
+			var id= $(this).attr('data-id');
+			var e= 'dd[data-id="' + id + '"]';
 			if ($(e).is(":hidden")) {
 				// only show this element
 				$('dd').hide();
@@ -148,7 +148,7 @@
 				$(e).hide();
 			}
 			
-			var item = $(this).parent().parent();
+			var item= $(this).parent().parent();
 			item.addClass('read');
 			//event.preventDefault();			
 			$.ajax({
@@ -167,7 +167,7 @@
 		$('.mark-star').click(function(event)
 		{
 			event.preventDefault();
-			var element = $(this);
+			var element= $(this);
 			element.find('i').toggleClass('icon-star');
 			element.find('i').toggleClass('icon-star-empty');					
 			$.ajax({
@@ -191,7 +191,7 @@
 		$('.nav-dropdown').click(function(event)
 		{
 			event.preventDefault();
-			var l = $(this);	
+			var l= $(this);	
 			l.addClass("active-modal");		
 			$.get($(this).attr('href'), function(data){
 				$('#modal').html(data).show();
@@ -203,7 +203,7 @@
 		$('#modal').on('click','.delete',function(event)
 		{
 			event.preventDefault();
-			var l = $(this);			
+			var l= $(this);			
 			$.get(l.attr('href'), function(data){
 				$('#modal').html(data).show();			
 			});			
@@ -212,7 +212,7 @@
 		
 		$('#subscribe-link').click(function(event){
 			event.preventDefault();
-			var l = $(this);
+			var l= $(this);
 			l.addClass("active-modal");			
 			$.get(l.attr('href'), function(data){
 				$('#modal').html(data).show();
@@ -224,7 +224,7 @@
 		
 		$('#import-link').click(function(event){
 			event.preventDefault();
-			var l = $(this);
+			var l= $(this);
 			l.addClass("active-modal");			
 			$.get(l.attr('href'), function(data){
 				$('#modal').html(data).show();
@@ -236,8 +236,8 @@
 		
 		
 		$(document).mouseup(function (e) {
-			var container = $(".popup");
-			if (container.has(e.target).length === 0) {
+			var container= $(".popup");
+			if (container.has(e.target).length=== 0) {
 				container.hide();
 				$('a').removeClass('active-modal');		
 			}
@@ -246,7 +246,7 @@
 		$('.external-link').mousedown(function(e) {			
 			if (e.which <= 2) {
 			e.preventDefault();			
-			var item = $(this).parent().parent();
+			var item= $(this).parent().parent();
 			item.addClass('read');					
 			$.ajax({
 				url: '{{request.script_name}}items/' + $(this).data('id'),
@@ -263,7 +263,7 @@
 		});
 		
 		$('.nav-dropdown').click(function() {
-				var l = $(this);
+				var l= $(this);
 				$('.dropdown', this).css('top', l.offset().top + l.height());
 				$('.dropdown', this).css('left', l.offset().left + l.width());
 				$('.dropdown',this).show();
@@ -283,7 +283,7 @@
 			});
 
 			$(window).bind('orientationchange', function(){
-        		var w = $(window).width();
+        		var w= $(window).width();
         		if(w > 640 && menu.is(':hidden')) {
         			menu.show();
         			

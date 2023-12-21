@@ -2,11 +2,11 @@
 <form action="{{url('/channels')}}" method="POST">
 <ul>
 <li>
-	<label for = "title">Url</label> 
-	<input type="text" name = "url" class="url"/>
+	<label for="title">Url</label> 
+	<input type="text" name="url" class="url"/>
 </li>
 <li>
-	<input type="submit" value = "Add">
+	<input type="submit" value="Add">
 </li>
 </ul>
 </form>
